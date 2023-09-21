@@ -1,12 +1,17 @@
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function BannerBox() {
+    const navigate = useNavigate();
     const textStyle = {
         fontWeight: '600',
         marginBottom: '10px',
         color: '#fff'
       };
+    const handlebook = () =>{
+        navigate('/bookslot')
+    }
   return (
     <div id="banner">
         
@@ -26,7 +31,7 @@ function BannerBox() {
         <Typography style={{marginBottom:'20px',color: '#fff'}}>
           Making software intelligent...
         </Typography>
-        <Button style={{padding:'15px 15px'}} variant="contained">Learn More</Button>
+       <Button onClick={()=>handlebook()} style={{padding:'15px 15px'}} variant="contained">Book Slot</Button>
       </Box>
     </Box>
           </div>

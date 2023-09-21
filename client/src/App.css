@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Baloo+Bhaijaan+2&family=Croissant+One&family=DM+Serif+Display&family=Inspiration&family=Ms+Madi&family=Quicksand:wght@500&family=Roboto&display=swap');
+body{
+  font-family: 'DM Serif Display', serif;
+}
 #banner{
   background-image: url("./images/banner.jpg");
   background-size: cover;
@@ -16,4 +20,29 @@
   width: 100%;
   height: 102vh;
   background-color: rgba(0, 0, 0, 0.66); 
+}
+#banner2 {
+  background-image: url("./images/jordan-graff-9TBgvuPAe0Y-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding-bottom: 1%;
+  color: white;
+  position: relative; /* Add this to make the ::before pseudo-element relative to #banner2 */
+}
+
+#banner2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 1, 1); /* Black overlay with 90% opacity */
+  z-index: -1; /* Place the overlay behind the content */
+}
+.light-theme {
+  background-color: white !important;
+  color: black !important;
 }

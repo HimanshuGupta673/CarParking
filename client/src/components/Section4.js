@@ -10,14 +10,16 @@ const Section4Styled = styled(Box)(({ theme }) => ({
 const BlueBorder = styled('div')`
   width: 40px;
   height: 4px;
-  background-color: blue;
+  background-color: #0064a8;
   margin: 10px 0px;
 `;
 const StyledBox1 = styled(Box)(({ theme }) => ({
     width: '50%'
 }))
 const StyledBox2 = styled(Box)(({ theme }) => ({
-    width: '50%'
+    width: '50%',
+    // paddingLeft:'20px',
+    marginLeft:'20px'
 }))
 const StyledTypo = styled(Box)(({ theme }) => ({
     margin: '20px 0px'
@@ -32,12 +34,12 @@ const listItemStyle = {
   };
 
   const iconStyle = {
-    color: 'blue',
+    color: '#0064a8',
     marginRight: '8px', // Add space between the icon and text
   };
 function Section4() {
     return (
-        <Box>
+        <Box bgcolor="#FAFAFA">
             <Section4Styled>
                 <StyledBox1>
                     <Box>

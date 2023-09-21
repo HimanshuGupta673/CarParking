@@ -15,7 +15,7 @@ const StyledParkinto = styled(Typography)(({theme})=>({
 const BlueBorder = styled('div')`
   width: 40px;
   height: 4px;
-  background-color: blue;
+  background-color: #0064a8;
   margin: 10px auto;
 `;
 const StyledText1 = styled(Typography)(({theme})=>({
@@ -34,7 +34,7 @@ const StyledText2 = styled(Typography)(({theme})=>({
 }))
 function Section2() {
     return (
-        <Box bgcolor="#FAFAFA">
+        <div id='learnMore' style={{backgroundColor:'#FAFAFA'}}>
             <Section2Styled>
             <Box marginBottom="50px">
                 <StyledParkinto>Parkinto</StyledParkinto>
@@ -56,7 +56,7 @@ function Section2() {
                 </StyledText2>
             </Box>
         </Section2Styled>
-        </Box>
+        </div>
     )
 }
 

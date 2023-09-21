@@ -1,14 +1,24 @@
 import React from 'react'
+import { useEffect } from 'react';
 import {AppBar,Toolbar,Box,Typography,styled,Drawer,List } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import CustomButtons from './CustomButtons';
-const Darktheme = styled(AppBar)`
-  position: fixed;
-  z-index: 1111111;
-  background-color: transparent !important; /* Make the background transparent */
-`;
+const Darktheme = styled(AppBar)(({ theme }) => ({
+    backgroundColor: 'transparent',
+    position: 'fixed',
+    zIndex: '1111111',
+    transition: 'background-color 0.3s, color 0.3s', // Add transition for smooth color change
+  }));
+  const LightTheme = styled(Darktheme)(({ theme }) => ({
+  
+    backgroundColor: 'white !important',
+    color: 'black !important',
+    transition: 'background-color 0.3s, color 0.3s',
+  }));
+  
+  
 
 const MenuButton = styled(IconButton)(({ theme }) => ({
     display: 'none',
@@ -30,7 +40,7 @@ const Name = styled(Typography)(({ theme }) => ({
 
 function Header() {
     const [open, setOpen] = useState(false);
-
+    const [scrolling, setScrolling] = useState(false);
     const handleClose = () => {
         setOpen(false);
     }
@@ -48,8 +58,22 @@ function Header() {
             </List>
         </Box>
     );
+    const handleScroll = () => {
+        if (window.scrollY > 0 && !scrolling) {
+          setScrolling(true);
+        } else if (window.scrollY === 0 && scrolling) {
+          setScrolling(false);
+        }
+      };
+      useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [scrolling]);
   return (
-    <Darktheme position="static">
+    <Darktheme position="static" className={scrolling ? 'light-theme' : ''}>
       <Toolbar>
         <MenuButton
             color="inherit"

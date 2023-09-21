@@ -37,14 +37,13 @@ function ParkingSlotScreen() {
 
   const slotArray = Array.from({ length: slots }, (_, index) => ({
     number: index + 1,
-    status: index % 3 === 0 ? 'occupied' : index % 4 === 0 ? 'booked' : 'green',
+    status: index % 3 === 0 ? 'occupied' : index % 4 === 0 ? 'booked' : '#32de84',
   }));
 
   const red = slotArray.filter((slot) => slot.status === 'occupied').length;
   const yellow = slotArray.filter((slot) => slot.status === 'booked').length;
   const totalSlots = slots; // Total number of slots
 
-  // Calculate the percentage of occupied and booked slots
   let occupiedPercentage = (red / totalSlots) * 100;
   occupiedPercentage += (yellow / totalSlots) * 100;
 
@@ -58,7 +57,7 @@ function ParkingSlotScreen() {
 
 
   const handleSlotClick = (slotNumber, slotStatus) => {
-    if (slotStatus === 'green' && bookSlotNum !== slotNumber) {
+    if (slotStatus === '#32de84' && bookSlotNum !== slotNumber) {
       setBookSlotNum(slotNumber);
     }
   };
@@ -89,7 +88,7 @@ function ParkingSlotScreen() {
 
 
   return (
-    <div style={{ backgroundImage: 'linear-gradient(180deg, #0a6bb2, #6deeff)',minHeight:'100vh' }}>
+    <div style={{ backgroundColor: 'rgb(147 154 181 / 31%)',minHeight:'100vh' }}>
       <div
         style={{
           display: 'flex',
@@ -125,8 +124,8 @@ function ParkingSlotScreen() {
   Booked: {slotArray.filter(slot => slot.status === 'booked').length}
 </div>
 <div>
-  <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: 'green', marginRight: '5px' }}></span>
-  Available: {slotArray.filter(slot => slot.status === 'green').length}
+  <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: '#32de84', marginRight: '5px' }}></span>
+  Available: {slotArray.filter(slot => slot.status === '#32de84').length}
 </div>
 
           <div>Total Slots: {slots}</div>
@@ -145,15 +144,15 @@ function ParkingSlotScreen() {
           {slotArray.map((slot, index) => (
             <div
               style={{
-                border: `4px solid ${slot.status === 'green' ? 'green' : (slot.status === 'occupied' ? 'red' : 'yellow')}`,
+                border: `4px solid ${slot.status === '#32de84' ? '#32de84' : (slot.status === 'occupied' ? 'red' : 'yellow')}`,
                 backgroundColor:
-                  bookSlotNum === slot.number ? 'green' : slot.status === 'green' ? 'white' : null,
+                  bookSlotNum === slot.number ? '#32de84' : slot.status === '#32de84' ? 'white' : null,
                 padding: '20px',
                 textAlign: 'center',
                 fontSize: '1.5rem',
                 fontWeight: 'bold',
                 boxShadow: '2px 2px 3px',
-                cursor: slot.status === 'green' ? 'pointer' : 'not-allowed',
+                cursor: slot.status === '#32de84' ? 'pointer' : 'not-allowed',
               }}
               key={index}
               className="parking-slot"

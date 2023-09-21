@@ -1,13 +1,16 @@
 import { Box, Typography, styled } from '@mui/material'
 import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import MobileFriendlyIcon from '@mui/icons-material/MobileFriendly';
 const Section3Styled = styled(Box)(({ theme }) => ({
     padding: '60px 200px'
 }))
 const BlueBorder = styled('div')`
   width: 40px;
   height: 4px;
-  background-color: blue;
+  background-color: #0064a8;
   margin: 10px auto;
 `;
 const StyledFeatures = styled(Typography)(({ theme }) => ({
@@ -20,18 +23,28 @@ const StyledFeatures = styled(Typography)(({ theme }) => ({
 }))
 const StyledRow = styled(Box)(({ theme }) => ({
     display: 'flex',
-    justifyContent:'space-between',
-    margin:'50px 0px'
+    justifyContent: 'space-between',
+    margin: '50px 0px'
 }))
 const StyledRow1 = styled(Box)(({ theme }) => ({
     display: 'flex',
-    border:'1px solid black',
-    width:'30rem',
-    height:'10rem'
+    border: '1px solid black',
+    width: '30rem',
+    height: '10rem',
+    transition: 'background-color 0.3s ease',
+
+    '&:hover': {
+        backgroundColor: '#1C1D21',
+        color: 'white',
+    },
 }))
 const StyledEye = styled(Box)(({ theme }) => ({
-    width:'30%',
-
+    width: '30%',
+}))
+const StyledTypo = styled(Typography)(({ theme }) => ({
+    '&:hover': {
+        color: 'white',
+    },
 }))
 function Section3() {
     return (
@@ -46,40 +59,40 @@ function Section3() {
                 <StyledRow>
                     <StyledRow1>
                         <StyledEye>
-                            <VisibilityIcon style={{padding:'20px 10px 0px 20px',color:'blue',fontSize:'30px'}} />
+                            <VisibilityIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
-                            <Typography style={{fontWeight:'600',fontSize:'20px',padding:'20px 0px'}}>Occupancy detection</Typography>
+                            <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Occupancy detection</StyledTypo>
                             <Typography color="#808080">Application analyses images from the cameras and performs car/boat parking occupancy detection.</Typography>
                         </Box>
                     </StyledRow1>
                     <StyledRow1>
-                    <StyledEye>
-                            <VisibilityIcon style={{padding:'20px 10px 0px 20px',color:'blue',fontSize:'30px'}} />
+                        <StyledEye>
+                            <EqualizerIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
-                            <Typography style={{fontWeight:'600',fontSize:'20px',padding:'20px 0px'}}>Occupancy detection</Typography>
-                            <Typography color="#808080">Application analyses images from the cameras and performs car/boat parking occupancy detection.</Typography>
+                            <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Statistics</StyledTypo>
+                            <Typography color="#808080">Our system provides several types of statistics about usage of your parking spaces.</Typography>
                         </Box>
                     </StyledRow1>
                 </StyledRow>
                 <StyledRow>
                     <StyledRow1>
                         <StyledEye>
-                            <VisibilityIcon style={{padding:'20px 10px 0px 20px',color:'blue',fontSize:'30px'}} />
+                            <MobileFriendlyIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
-                            <Typography style={{fontWeight:'600',fontSize:'20px',padding:'20px 0px'}}>Occupancy detection</Typography>
-                            <Typography color="#808080">Application analyses images from the cameras and performs car/boat parking occupancy detection.</Typography>
+                            <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Navigace</StyledTypo>
+                            <Typography color="#808080">Thanks to the mobile app, it is easy to navigate directly to free parking place.</Typography>
                         </Box>
                     </StyledRow1>
                     <StyledRow1>
-                    <StyledEye>
-                            <VisibilityIcon style={{padding:'20px 10px 0px 20px',color:'blue',fontSize:'30px'}} />
+                        <StyledEye>
+                            <DirectionsCarIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
-                            <Typography style={{fontWeight:'600',fontSize:'20px',padding:'20px 0px'}}>Occupancy detection</Typography>
-                            <Typography color="#808080">Application analyses images from the cameras and performs car/boat parking occupancy detection.</Typography>
+                            <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Reading car license plates</StyledTypo>
+                            <Typography color="#808080">Application is able to read and recognize car license plates, so you know who parks on your parking place.</Typography>
                         </Box>
                     </StyledRow1>
                 </StyledRow>

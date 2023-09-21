@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Box, styled } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
 const StyledLinks = styled(Box)(({ theme }) => ({
   display: 'flex',
   [theme.breakpoints.down('md')]: {
@@ -15,13 +15,25 @@ const MarginLinks = styled(Typography)(({ theme }) => ({
   fontWeight: 'normal',
   fontFamily: 'inherit',
   cursor:'pointer',
+  transition: 'border-bottom 0.2s ease',
   [theme.breakpoints.down('md')]: {
     marginBottom: '20px',
     marginLeft: '25px'
-  }
+  },
+  '&:hover': { 
+    borderBottom: '2px solid #0064a8', 
+  },
 }));
 
 function CustomButtons() {
+    const navigate = useNavigate()
+    const handleNavigateContact = () =>{
+      navigate('/contact')
+    }
+    const handleNavigateRegister = () =>{
+      navigate('/register')
+    }
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -32,10 +44,10 @@ function CustomButtons() {
   };
   return (
     <StyledLinks>
-      <MarginLinks onClick={() => scrollToSection('about')}>Home</MarginLinks>
-      <MarginLinks onClick={() => scrollToSection('skills')}>About Us</MarginLinks>
-      <MarginLinks onClick={() => scrollToSection('projects')}>Contact Us</MarginLinks>
-      <MarginLinks onClick={() => scrollToSection('aspiration')}>Register</MarginLinks>
+      <MarginLinks onClick={() => scrollToSection('banner')}>Home</MarginLinks>
+      <MarginLinks onClick={() => scrollToSection('aboutUs')}>About Us</MarginLinks>
+      <MarginLinks onClick={() => handleNavigateContact()}>Contact Us</MarginLinks>
+      <MarginLinks onClick={() => handleNavigateRegister()}>Register</MarginLinks>
     </StyledLinks>
   );
 }
