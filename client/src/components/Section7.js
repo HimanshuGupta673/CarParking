@@ -72,7 +72,7 @@ function Section7() {
           <BlueBorder />
         </Box>
         <Box marginBottom="20px">
-          <StyledText color="#808080">We are a young "start-up" company, determined to invent new smart solutions, which helps with "small" problems of modern world. Our technical solutions are based on years of experience in the field of A.I.</StyledText>
+          {/* <StyledText color="#808080">We are a young "start-up" company, determined to invent new smart solutions, which helps with "small" problems of modern world. Our technical solutions are based on years of experience in the field of A.I.</StyledText> */}
         </Box>
         <Box>
           <Container>

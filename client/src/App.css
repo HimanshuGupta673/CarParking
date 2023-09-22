@@ -5,7 +5,7 @@ body{
   font-family: 'Baloo Bhaijaan 2';
 }
 .webName{
-  font-family: 'Croissant One', cursive;
+  font-family: 'Croissant One, cursive';
 }
 #banner{
   background-image: url("./images/banner.jpg");
@@ -23,7 +23,7 @@ body{
   top: 0;
   left: 0;
   width: 100%;
-  height: 100.6vh;
+  height: 102vh;
   background-color: rgba(0, 0, 0, 0.5); 
 }
 #banner2 {

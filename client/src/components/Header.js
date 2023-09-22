@@ -85,8 +85,8 @@ function Header() {
         <Drawer open={open} onClose={handleClose}>
             {list()}
         </Drawer>
-        <Name className="webName" style={{fontSize:"30px"}} variant="h5">
-            PARKSmartly
+        <Name className="webName" style={{fontSize:"30px",fontFamily: 'Croissant One, cursive'}} variant="h5">
+            PARKINTO
         </Name>
 
         <CustomButtonWrapper>

@@ -58,7 +58,7 @@ function Section2() {
                 </Box>
                 <Box>
                     <StyledText1>
-                        Parkinto is a genuine parking system product which is able to detect car/boat parking occupancy based on image only. Our application detects the "free/occupied" state of parking place with excellent results. The application uses advanced algorithms of A.I. and image recognition. Parkinto system is cloud-based service. Any type od your camera can by connected to Parkinto system easily.
+                        Parkinto is a genuine parking system product which is able to detect car parking occupancy based on image only. Our application detects the "free/occupied" state of parking place with excellent results. The application uses advanced algorithms of A.I. and image recognition. Parkinto system is service that provides real time info.
                     </StyledText1>
                 </Box>
                 <Box >
