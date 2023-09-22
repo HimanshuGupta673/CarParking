@@ -85,7 +85,7 @@ function Header() {
         <Drawer open={open} onClose={handleClose}>
             {list()}
         </Drawer>
-        <Name style={{fontSize:"30px"}} variant="h5">
+        <Name className="webName" style={{fontSize:"30px"}} variant="h5">
             PARKSmartly
         </Name>
 
