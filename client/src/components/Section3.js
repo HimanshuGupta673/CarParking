@@ -5,7 +5,10 @@ import EqualizerIcon from '@mui/icons-material/Equalizer';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import MobileFriendlyIcon from '@mui/icons-material/MobileFriendly';
 const Section3Styled = styled(Box)(({ theme }) => ({
-    padding: '60px 200px'
+    padding: '60px 200px',
+    [theme.breakpoints.down('md')]: {
+        padding: '60px 20px',
+    },
 }))
 const BlueBorder = styled('div')`
   width: 40px;
@@ -24,7 +27,10 @@ const StyledFeatures = styled(Typography)(({ theme }) => ({
 const StyledRow = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '50px 0px'
+    margin: '50px 0px',
+    [theme.breakpoints.down('md')]: {
+        display:'block',
+    },
 }))
 const StyledRow1 = styled(Box)(({ theme }) => ({
     display: 'flex',
@@ -40,9 +46,16 @@ const StyledRow1 = styled(Box)(({ theme }) => ({
         backgroundColor: '#1C1D21',
         color: 'white',
     },
+    [theme.breakpoints.down('md')]: {
+        width:'fit-content',
+        height:'100%',
+        margin:'40px 0px',
+        paddingBottom:'20px'
+    },
 }))
 const StyledEye = styled(Box)(({ theme }) => ({
     width: '30%',
+    padding:'20px 10px'
 }))
 const StyledTypo = styled(Typography)(({ theme }) => ({
     '&:hover': {
@@ -62,7 +75,7 @@ function Section3() {
                 <StyledRow>
                     <StyledRow1>
                         <StyledEye>
-                            <VisibilityIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
+                            <VisibilityIcon style={{ color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
                             <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Occupancy detection</StyledTypo>
@@ -71,7 +84,7 @@ function Section3() {
                     </StyledRow1>
                     <StyledRow1>
                         <StyledEye>
-                            <EqualizerIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
+                            <EqualizerIcon style={{ color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
                             <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Statistics</StyledTypo>
@@ -82,7 +95,7 @@ function Section3() {
                 <StyledRow>
                     <StyledRow1>
                         <StyledEye>
-                            <MobileFriendlyIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
+                            <MobileFriendlyIcon style={{ color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
                             <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Navigace</StyledTypo>
@@ -91,7 +104,7 @@ function Section3() {
                     </StyledRow1>
                     <StyledRow1>
                         <StyledEye>
-                            <DirectionsCarIcon style={{ padding: '20px 10px 0px 20px', color: '#0064a8', fontSize: '30px' }} />
+                            <DirectionsCarIcon style={{  color: '#0064a8', fontSize: '30px' }} />
                         </StyledEye>
                         <Box>
                             <StyledTypo style={{ fontWeight: '600', fontSize: '20px', padding: '20px 0px' }}>Reading car license plates</StyledTypo>

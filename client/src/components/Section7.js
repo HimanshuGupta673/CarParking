@@ -9,7 +9,10 @@ font-size:60px
 `
 const Section7Styled = styled(Box)(({ theme }) => ({
   padding: '60px 200px',
-  margin: '20px 0px'
+  margin: '20px 0px',
+  [theme.breakpoints.down('md')]: {
+    padding: '60px 20px',
+  },
 }))
 const BlueBorder = styled('div')`
   width: 40px;
@@ -32,6 +35,12 @@ const Container = styled(Box)(({ theme }) => ({
     display: 'block'
   }
 }))
+const StyledText = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    display:'flex',
+    textAlign:'justify'
+  }
+}))
 
 const InBox = styled(Box)(({ theme }) => ({
   padding: '0px 35px',
@@ -47,6 +56,7 @@ const InBox = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down('md')]: {
   padding: '20px 20px',
+  margin:'40px 0px'
 },
   [theme.breakpoints.between('md', 'lg')]: {
   padding: '20px 20px',
@@ -62,7 +72,7 @@ function Section7() {
           <BlueBorder />
         </Box>
         <Box marginBottom="20px">
-          <Typography color="#808080">We are a young "start-up" company, determined to invent new smart solutions, which helps with "small" problems of modern world. Our technical solutions are based on years of experience in the field of A.I.</Typography>
+          <StyledText color="#808080">We are a young "start-up" company, determined to invent new smart solutions, which helps with "small" problems of modern world. Our technical solutions are based on years of experience in the field of A.I.</StyledText>
         </Box>
         <Box>
           <Container>

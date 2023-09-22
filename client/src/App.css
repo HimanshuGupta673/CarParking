@@ -23,13 +23,8 @@ body{
   top: 0;
   left: 0;
   width: 100%;
-  height: 102vh;
+  height: 100.6vh;
   background-color: rgba(0, 0, 0, 0.5); 
-  /* z-index: 1; */
-}
-#banner h3,
-#banner p {
-  /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 1); */
 }
 #banner2 {
   background-image: url("./images/jordan-graff-9TBgvuPAe0Y-unsplash.jpg");

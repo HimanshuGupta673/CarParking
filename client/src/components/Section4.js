@@ -5,7 +5,11 @@ import Carousel from 'react-multi-carousel';
 import image1 from '../images/image11.jpg'
 const Section4Styled = styled(Box)(({ theme }) => ({
     display: 'flex',
-    padding: '60px 200px'
+    padding: '60px 200px',
+    [theme.breakpoints.down('md')]: {
+        padding: '60px 20px',
+        display:'block'  
+    },
 }))
 const BlueBorder = styled('div')`
   width: 40px;
@@ -14,28 +18,42 @@ const BlueBorder = styled('div')`
   margin: 10px 0px;
 `;
 const StyledBox1 = styled(Box)(({ theme }) => ({
-    width: '50%'
+    width: '50%',
+    [theme.breakpoints.down('md')]: {
+        width:'100%',
+    },
 }))
 const StyledBox2 = styled(Box)(({ theme }) => ({
     width: '50%',
-    // paddingLeft:'20px',
-    marginLeft:'20px'
+    marginLeft:'20px',
+    [theme.breakpoints.down('md')]: {
+        width:'100%',
+    },
+}))
+const StyledText = styled(Box)(({ theme }) => ({
+    [theme.breakpoints.down('md')]: {
+        display:'flex',
+        textAlign:'justify'
+    },
 }))
 const StyledTypo = styled(Box)(({ theme }) => ({
     margin: '20px 0px'
 }))
 const StyledImage = styled('img')(({ theme }) => ({
     width:'90%',
-    height:'90%'
+    height:'90%',
+    [theme.breakpoints.down('md')]: {
+        width:'90%',
+    },
 }))
 const listItemStyle = {
     display: 'flex',
-    alignItems: 'center', // Center items vertically
+    alignItems: 'center', 
   };
 
   const iconStyle = {
     color: '#0064a8',
-    marginRight: '8px', // Add space between the icon and text
+    marginRight: '8px', 
   };
 function Section4() {
     return (
@@ -51,7 +69,7 @@ function Section4() {
                         <BlueBorder />
                     </Box>
                     <Box>
-                        <Typography style={{ color: '#808080' }}>We focus mainly on parking space owners. We offer the ability to observe and monitor parking spaces and provide data to web pages or other systems owned by the customer. Typical usecases are:</Typography>
+                        <StyledText style={{ color: '#808080' }}>We focus mainly on parking space owners. We offer the ability to observe and monitor parking spaces and provide data to web pages or other systems owned by the customer. Typical usecases are:</StyledText>
                         <StyledTypo style={listItemStyle}>
                             <CheckCircleOutlineIcon style={iconStyle} />
                             Municipal parking
