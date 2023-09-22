@@ -18,7 +18,7 @@ function HomeScreen() {
         justifyContent: 'center',
         alignItems: 'center',
         height:'100vh',
-        backgroundColor: 'black', // Dark background color
+        backgroundColor: '#211f1f', // Dark background color
       }}
     >
       <div className='homebanner' id='homebanner'>

@@ -28,10 +28,13 @@ const StyledRow = styled(Box)(({ theme }) => ({
 }))
 const StyledRow1 = styled(Box)(({ theme }) => ({
     display: 'flex',
-    border: '1px solid black',
     width: '30rem',
     height: '10rem',
     transition: 'background-color 0.3s ease',
+    boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+    transform: 'translateZ(0)',
+    transition: 'transform 0.5s ease',
+    willChange: 'transform',
 
     '&:hover': {
         backgroundColor: '#1C1D21',
