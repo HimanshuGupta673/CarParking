@@ -53,12 +53,12 @@ function Section2() {
         <div id='learnMore' style={{ backgroundColor: '#FAFAFA' }}>
             <Section2Styled>
                 <Box marginBottom="50px">
-                    <StyledParkinto>Parkinto</StyledParkinto>
+                    <StyledParkinto>ParkSmartly</StyledParkinto>
                     <BlueBorder />
                 </Box>
                 <Box>
                     <StyledText1>
-                        Parkinto is a genuine parking system product which is able to detect car parking occupancy based on image only. Our application detects the "free/occupied" state of parking place with excellent results. The application uses advanced algorithms of A.I. and image recognition. Parkinto system is service that provides real time info.
+                        Parksmartly is a genuine parking system product which is able to detect car parking occupancy based on image only. Our application detects the "free/occupied" state of parking place with excellent results. The application uses advanced algorithms of A.I. and image recognition. Parkinto system is service that provides real time info.
                     </StyledText1>
                 </Box>
                 <Box >
@@ -68,7 +68,7 @@ function Section2() {
                 </Box>
                 <Box>
                     <StyledText2>
-                        Parkinto comes with a new unique detection method using one or more cameras. Most of current technical solutions use sensors built into the ground under each parking space or mounted above each parking space. These solutions have a high installation cost and in some situations construction work may not be allowed.
+                        ParkSmartly comes with a new unique detection method using one or more cameras. Most of current technical solutions use sensors built into the ground under each parking space or mounted above each parking space. These solutions have a high installation cost and in some situations construction work may not be allowed.
                     </StyledText2>
                 </Box>
             </Section2Styled>

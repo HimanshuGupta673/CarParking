@@ -1,8 +1,9 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom"
 import { useParams } from 'react-router-dom';
 function ParkingSlotScreen() {
-  const [slots] = useState(16);
+  const [slots,setSlot] = useState(0);
   const [slotsPerRow, setSlotsPerRow] = useState(4);
   const [bookSlotNum, setBookSlotNum] = useState(0);
   const navigate = useNavigate();
@@ -25,8 +26,7 @@ function ParkingSlotScreen() {
         setSlotsPerRow(4);
       }
     }
-
-
+    
     window.addEventListener('resize', handleResize);
     handleResize();
 
@@ -34,15 +34,44 @@ function ParkingSlotScreen() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
+  var slotsarr=[];
+  const [slotArray,setSlotArray]=useState([]);
+    async function getslots(){
+      const API_URL = 'http://localhost:3001';
+      try {
+        console.log("aciton called")
+           await axios.post(`${API_URL}/findSlot`,{"name":loc2}).then((res)=>{
+            // console.log(res)
+            slotsarr=res.data;
+            console.log(slotsarr)
+            var tmepArray = Array.from({ length: slotsarr.length }, (_, index) => ({
+              number: index + 1,
+              slotId: slotsarr[index].slotId,
+              status: (parseInt(slotsarr[index].InTime)+parseInt(slotsarr[index].Time)*  3600000)>= Date.now() ? 'occupied' :  '#32de84',
+            }));
+            setSlotArray(tmepArray)
+            red = slotArray.filter((slot) => slot.status === 'occupied').length;
+            yellow = slotArray.filter((slot) => slot.status === 'booked').length;
+            totalSlots = slotsarr.length; // Total number of slots
+            setSlot(slotsarr.length);
+  
+          }).catch((e)=>{
+            console.log(e);
+           });
+          //  console.log(res)
+           
+    } catch (error) {
+        console.log('Error while calling getAllPlaces API ', error.message);
+    }
+  
+    }
+    
+ 
 
-  const slotArray = Array.from({ length: slots }, (_, index) => ({
-    number: index + 1,
-    status: index % 3 === 0 ? 'occupied' : index % 4 === 0 ? 'booked' : '#32de84',
-  }));
-
-  const red = slotArray.filter((slot) => slot.status === 'occupied').length;
-  const yellow = slotArray.filter((slot) => slot.status === 'booked').length;
-  const totalSlots = slots; // Total number of slots
+  var red =0;
+  var yellow=0;
+  var totalSlots=0 ;
 
   let occupiedPercentage = (red / totalSlots) * 100;
   occupiedPercentage += (yellow / totalSlots) * 100;
@@ -54,6 +83,18 @@ function ParkingSlotScreen() {
   } else if (occupiedPercentage > 80) {
     factor = 20;
   }
+  let occupiedCount = 0;
+ let status32de84Count = 0;
+
+ slotArray.forEach((slot, index) => {
+  if (slot.status === 'occupied') {
+    occupiedCount++;
+  }
+
+  if (slot.status === '#32de84') {
+    status32de84Count++;
+  }
+});
 
 
   const handleSlotClick = (slotNumber, slotStatus) => {
@@ -66,13 +107,6 @@ function ParkingSlotScreen() {
   }
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Form Data:', formData);
-    setFormData({
-      owner: '',
-      vehicleNumber: '',
-      parkingTime: '',
-      price: ''
-    });
   };
   const handleInputChange = (event, convertToUpperCase) => {
     const { name, value } = event.target;
@@ -82,10 +116,30 @@ function ParkingSlotScreen() {
       [name]: updatedValue,
     });
   };
-  const handleClick =() =>{
-    
+  const handleClick =async (idx) =>{
+    console.log(slotArray[idx-1].slotId)
+    var data={ 
+      "OwnerName":document.getElementById('owner').value,
+      "VehicleNumber":document.getElementById('vehicleNumber').value, 
+      "Time":document.getElementById('parkingTime').value,  
+      "SlotNumber":slotArray[idx-1].slotId,
+      "Price":(40*parseInt(document.getElementById('parkingTime').value)).toString()
+    }
+    console.log(data)
+    const API_URL = 'http://localhost:3001';
+    await axios.post(`${API_URL}/bookSlot`,data).then((res)=>{
+      // console.log(res)
+      var temp=res.data;
+      console.log(temp)
+      getslots();
+    }).catch((e)=>{
+      console.log(e);
+     });
+    return false;
   }
-
+  useEffect(()=>{
+    getslots();
+  },[handleClick])
 
   return (
     <div style={{ backgroundColor: 'rgb(147 154 181 / 31%)',minHeight:'100vh' }}>
@@ -117,15 +171,15 @@ function ParkingSlotScreen() {
         >
           <div>
   <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: 'red', marginRight: '5px' }}></span>
-  Occupied: {slotArray.filter(slot => slot.status === 'occupied').length}
+  Occupied: {occupiedCount}
 </div>
 <div>
   <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: 'yellow', marginRight: '5px' }}></span>
-  Booked: {slotArray.filter(slot => slot.status === 'booked').length}
+  Booked: {yellow}
 </div>
 <div>
   <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: '#32de84', marginRight: '5px' }}></span>
-  Available: {slotArray.filter(slot => slot.status === '#32de84').length}
+  Available: {status32de84Count}
 </div>
 
           <div>Total Slots: {slots}</div>
@@ -164,6 +218,7 @@ function ParkingSlotScreen() {
         </div>
         {bookSlotNum!=0 && (
           <form onSubmit={handleFormSubmit} style={{ marginTop: '30px' }}>
+          {/* <form  style={{ marginTop: '30px' }}> */}
             <div className="form-group">
               <label htmlFor="owner">Owner Name: </label>
               <input
@@ -214,7 +269,9 @@ function ParkingSlotScreen() {
                 />
               </div> : null
             }
-            <button onClick={()=>handleClick(formData.price)} type="submit" className="form-button">
+            {/* <button onClick={()=>handleClick(formData.price,bookSlotNum)} type="submit" className="form-button"> */}
+            <button onClick={()=>handleClick(bookSlotNum)}  className="form-button">
+
               Book Slot {bookSlotNum}
             </button>
           </form>

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Button, Select, MenuItem } from '@mui/material';
+import { getAllPlaces } from '../Actions/Action';
+import axios from 'axios';
+
 function HomeScreen() {
   const [location, setLocation] = useState('');
   const [location2, setLocation2] = useState('');
@@ -9,7 +12,36 @@ function HomeScreen() {
   const handleClick = () => {
     navigate(`/${location}/${location2}`);
   }
+  // var places=[];
+  const [places,setPlaces]=useState([]);
+  // useEffect(async () =>  {
+  //   // console.log("useeffect called");
+  //   // places = await getAllPlaces();
+  // }, [])
+  async function getplaces() {
+    const API_URL = 'http://localhost:3001';
+    try {
+      console.log("aciton called")
+      await axios.get(`${API_URL}/places`).then((res) => {
+        // console.log(res)
+        setPlaces(res.data);
+        // places = res.data;
+        console.log(places)
 
+      }).catch((e) => {
+        console.log(e);
+      });
+      //  console.log(res)
+
+    } catch (error) {
+      console.log('Error while calling getAllPlaces API ', error.message);
+    }
+
+  }
+  useEffect(()=>{
+    getplaces();
+  },[])
+  console.log(places)
   return (
     <Box
       sx={{
@@ -17,8 +49,8 @@ function HomeScreen() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height:'100vh',
-        backgroundColor: '#211f1f', 
+        height: '100vh',
+        backgroundColor: '#211f1f',
       }}
     >
       <div className='homebanner' id='homebanner'>
@@ -57,12 +89,9 @@ function HomeScreen() {
                   onChange={(e) => setLocation2(e.target.value)} // Corrected placement of onChange
                   value={location2} // Assuming `location` is the selected value
                 >
-                  <option value="">Select location 2</option>
-                  <option value="Kurukshetra">NIT Kurukshetra</option>
-                  <option value="Kurukshetra University">Kurukshetra University</option>
-                  <option value="Brahma Sarovar">Brahma Sarovar</option>
-                  <option value="Divine Mall">Divine Mall</option>
-                  <option value="Pipli">Pipli</option>
+                  { places.map((place,idx) => (
+                    <option  value={(idx+1).toString()}>{place}</option>
+                  ))}
                 </select>
               </div>
               : null}
@@ -85,7 +114,7 @@ function HomeScreen() {
         padding: '0px 10px'
       }}>
       </div>
-    </Box>
+    </Box >
   );
 }
 

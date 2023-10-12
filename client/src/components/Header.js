@@ -86,7 +86,7 @@ function Header() {
             {list()}
         </Drawer>
         <Name className="webName" style={{fontSize:"30px",fontFamily: 'Croissant One, cursive'}} variant="h5">
-            PARKINTO
+            PARKSmartly
         </Name>
 
         <CustomButtonWrapper>
